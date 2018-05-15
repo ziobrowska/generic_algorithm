@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+   <meta charset="UTF-8">
+
+        <title> Gramatyka kształtu | Joanna Ziobrowska </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Joanna Ziobrowska">
+      <link rel="stylesheet" href="styl_gramatyka.css">
+        <link href='http://fonts.googleapis.com/css?family=Caveat+Brush&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+      <script src="https://d3js.org/d3.v4.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script src="skrypt_gramatyka1.js"></script>
+      <script src="skrypt_gramatyka2.js"></script>
+     
+
+      </head>
+  <body oncontextmenu="return false;">
+
+    <header>
+       <p id="powitanie"> Witaj! <br>
+        Co chcesz zrobić?<br> </p>
+        
+    <button id="rysuj" >Chcę sam cos narysować</button>
+    <button id="losuj" > Algorytm ewolucyjny</button>
+    </header>
+    <div id="opis">
+    <button id="powrot">Wróć</button>
+      <h1>Tutaj narysujesz figury zgodne ze zdefiniowaną gramatyką kształtu</h1>
+      <h2>Sterowanie gramatyką:</h2>
+      <ul>
+      <li>Lewy przycisk myszki - <b>DÓŁ / LEWO</b></li>
+      <li>Prawy przycisk myszki - <b>GÓRA / PRAWO </b></li>
+      <li>Lewy przycisk myszki + klawisz CTRL - <b>"KRZYŻUJE" prostokąty </b></li>
+      </ul>
+        <h3>Kształt początkowy został zdefioniowany:</h3>
+    </div>
+     <div id="opis2">
+        <button id="powrot2">Wróć</button>
+      <h1> Algorytm ewolucyjny </h1>
+      <button class="b" id="generuj_0" >Generuj pokolenie początkowe</button>
+      <button class="b" id="generuj_1" >Generuj następne pokolenie</button>
+      <button class="b" id="generuj_10" >Generuj 10 następnych pokoleń</button>
+      <button class="b" id="rysuj_ostatnie" >Wyświetl ostatnie pokolenie</button>
+    </div>
+    <p id="pisz"></p>
+     <div id="napis"></div>
+    <div id="rysowanie"></div>
+    <div id="pokolenie"><div id="napis2"></div><div id="zawartosc"></div></div>
+   
+    <br>
+    <br>
+      <footer>
+      made by Joanna Ziobrowska, WFAIS UJ 2018
+      </footer>
+  </body>
+   <script>
+      $( "#rysuj" ).on('click', function() {
+        document.getElementById("rysowanie").innerHTML = '<svg class="svg2" id="svg"></svg>';
+        $( "#powitanie").hide();
+        $( "#rysuj").hide();
+        $( "#opis").show();
+        $( "#opis2").hide();
+        $( "#losuj").hide();
+        $( "#rysowanie").show();
+        $( "svg").show();
+        $( "#powrot").show();
+        $("footer").show();
+        rysuj_gramatyke();
+      });
+      </script>
+    <script>
+      $( "#losuj" ).on('click', function() { 
+        document.getElementById("rysowanie").innerHTML = "";
+        $( "#powitanie").hide();
+        $( "#rysowanie").show();
+        $( "#rysuj").hide();
+        $( "#opis2").show();
+        $( "#losuj").hide();
+        $( "#wyn").show();
+        $( "#powrot2").show();
+          napisz();
+      });
+      </script>
+    <script>
+    $( "#powrot" ).on('click', function() { 
+          $( "#powitanie").show();
+        $( "#rysuj").show();
+        $( "#opis").hide();
+        $( "#opis2").hide();
+        $( "#losuj").show();
+        $( "#wyn").hide();
+        $( "#powrot").hide();
+        $( "#powrot2").hide();
+        document.getElementById("rysowanie").innerHTML = "";
+        $("footer").hide();
+      });
+    </script>
+     <script>
+    $( "#powrot2" ).on('click', function() { 
+          $( "#powitanie").show();
+        $( "#rysuj").show();
+        $( "#opis").hide();
+        $( "#opis2").hide();
+        $( "#losuj").show();
+        $( "#wyn").hide();
+        $( "#powrot").hide();
+        $( "#powrot2").hide();
+        $( "#rysowanie").hide();
+        $( "#pisz").hide();
+        document.getElementById('pokolenie').innerHTML = '<div id="napis2"></div><div id="zawartosc"></div>';
+        document.getElementById("napis").innerHTML = "";
+        document.getElementById("rysowanie").innerHTML = "";
+        $("footer").hide();
+      });
+    </script>
+  <script>
+      $( "#generuj_1" ).on('click', function() { 
+        generuj_1_pokolenie();
+      });
+      </script>
+  <script>
+      $( "#generuj_10" ).on('click', function() { 
+        generuj_10_pokolen();
+      });
+      </script>
+  <script>
+      $( "#rysuj_ostatnie" ).on('click', function() { 
+        rysuj_ostatnie();
+          $("footer").show();
+      });
+      </script>
+  <script>
+      $( "#generuj_0" ).on('click', function() { 
+        losuj_i_ocen();
+           $("footer").show();
+      });
+      </script>
+ </html>
